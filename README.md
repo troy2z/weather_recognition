@@ -1,4 +1,4 @@
-# 灾害天气图像识别
+# 灾害天气图像识别 Disaster weather image recognition (including data set)
 
 ## CV 训练/测试/部署分类任务
 

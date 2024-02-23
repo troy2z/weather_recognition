@@ -83,3 +83,6 @@ python main.py
 （17）低空风切变：（飞机）航空失事；
 （18）酸雨-acidrain：作物等受害.`
 ```
+## 欢迎打赏
+![](./images/wxpay.png)
+![](./images/alipay.jpg)

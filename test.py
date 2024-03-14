@@ -132,7 +132,7 @@ def main():
 
 
 if __name__ == '__main__':
-
+    os.environ['TORCH_HOME'] = Constant.TORCH_HOME
     os.makedirs(config["oof_dir"], exist_ok=True)
     os.environ['CUDA_VISIBLE_DEVICES'] = config["CUDA_VISIBLE_DEVICES"]
 

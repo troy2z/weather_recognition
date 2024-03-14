@@ -1,5 +1,4 @@
-# 灾害天气图像识别 
-# Disaster weather image recognition (including data set)
+# 灾害天气图像识别
 
 ## CV 训练/测试/部署分类任务
 
@@ -10,6 +9,13 @@
 |  数据增强  |   (旋转/镜像/对比度等、mixup/cutmix)         |  [3](./qdnet/dataaug/) | 
 |  损失函数  |   (ce_loss/ce_smothing_loss/focal_loss/bce_loss等)                     |  [4](./qdnet/loss/)    | 
 
+
+## 支持的全部模型：
+
+> GEFFNET_LIST = ['efficientnet_b0', 'efficientnet_b1', 'efficientnet_b2',  'efficientnet_b3', 'efficientnet_b4', 'efficientnet_b5', 'efficientnet_b6', 'efficientnet_b7', 'efficientnet_b8', 'efficientnet_l2', 'efficientnet_es', 'efficientnet_em', 'efficientnet_el', 'efficientnet_cc_b0_4e', 'efficientnet_cc_b0_8e', 'efficientnet_cc_b1_8e', 'efficientnet_lite0', 'efficientnet_lite1', 'efficientnet_lite2', 'efficientnet_lite3', 'efficientnet_lite4', 'tf_efficientnet_b0', 'tf_efficientnet_b1', 'tf_efficientnet_b2', 'tf_efficientnet_b3', 'tf_efficientnet_b4', 'tf_efficientnet_b5', 'tf_efficientnet_b6', 'tf_efficientnet_b7', 'tf_efficientnet_b8', 'tf_efficientnet_b0_ap', 'tf_efficientnet_b1_ap', 'tf_efficientnet_b2_ap', 'tf_efficientnet_b3_ap', 'tf_efficientnet_b4_ap', 'tf_efficientnet_b5_ap', 'tf_efficientnet_b6_ap', 'tf_efficientnet_b7_ap', 'tf_efficientnet_b8_ap', 'tf_efficientnet_b0_ns', 'tf_efficientnet_b1_ns', 'tf_efficientnet_b2_ns', 'tf_efficientnet_b3_ns', 'tf_efficientnet_b4_ns', 'tf_efficientnet_b5_ns', 'tf_efficientnet_b6_ns', 'tf_efficientnet_b7_ns', 'tf_efficientnet_l2_ns', 'tf_efficientnet_l2_ns_475', 'tf_efficientnet_es', 'tf_efficientnet_em', 'tf_efficientnet_el', 'tf_efficientnet_cc_b0_4e', 'tf_efficientnet_cc_b0_8e', 'tf_efficientnet_cc_b1_8e', 'tf_efficientnet_lite0', 'tf_efficientnet_lite1', 'tf_efficientnet_lite2', 'tf_efficientnet_lite3', 'tf_efficientnet_lite4']
+
+### 预模型下载：
+> https://github.com/huggingface/pytorch-image-models 
 
 ## 数据集准备
 ```
@@ -44,7 +50,6 @@ python test.py --config_path "conf/effb3_ns.yaml" --n_splits 5
 python infer.py --config_path "conf/effb3_ns.yaml" --img_path "./data/img/rainstorm/1.jpg" --fold "0"
 python infer.py --config_path "conf/effb3_ns.yaml" --img_path "./data/img/waterlogging/2.jpg" --fold "1"
 ```
-
 
 
 ## 服务部署
@@ -83,6 +88,30 @@ python main.py
 （17）低空风切变：（飞机）航空失事；
 （18）酸雨-acidrain：作物等受害.`
 ```
+
+## 常见问题
+1、安装apex:
+```
+git clone https://www.github.com/nvidia/apex
+cd apex
+python setup.py install
+```
+
+2、ImportError: cannot import name 'container_abcs' from 'torch._six'
+```
+修改apex-0.1-py3.7.egg\apex\amp\_amp_state.py：
+修改前：
+if TORCH_MAJOR == 0:
+    import collections.abc as container_abcs
+else:
+    from torch._six import container_abcs
+    
+修改后：
+if TORCH_MAJOR == 1:
+    import collections.abc as container_abcs
+else:
+    from torch._six import container_abcs
+```
+
 ## 欢迎打赏
 ![](./images/wxpay.png)
-

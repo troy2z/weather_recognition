@@ -37,7 +37,7 @@ parser.add_argument('--fold', default="0", help='config file path')
 args = parser.parse_args()
 config = load_yaml(args.config_path, args)
 
-classmaps = pd.read_json(config["class_mapping"], orient="index", typ="series")
+classmaps = pd.read_json(config["class_mapping"], orient="index", typ="series", encoding="utf-8")
 
 
 class QDNetModel():

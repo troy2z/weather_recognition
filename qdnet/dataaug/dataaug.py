@@ -21,7 +21,7 @@ def get_transforms(image_size):
         albumentations.OneOf([
             albumentations.MotionBlur(blur_limit=5),
             albumentations.MedianBlur(blur_limit=5),
-            albumentations.GaussianBlur(blur_limit=5),
+            albumentations.GaussianBlur(blur_limit=(5, 7)),
             albumentations.GaussNoise(var_limit=(5.0, 30.0)),
         ], p=0.7),
 

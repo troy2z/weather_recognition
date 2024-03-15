@@ -2,12 +2,12 @@
 
 ## CV 训练/测试/部署分类任务
 
-|      ***       |   具体     |    样例   |  
+|      ***       |   具体     |    样例   |
 | :-----------------: | :---------:| :---------:|
 |  模型方面  |   (efficientnet等)       |  [1](./qdnet/conf/constant.py)  |
 |  metric方面  |   (Swish/ArcMarginProduct_subcenter/ArcFaceLossAdaptiveMargin等)       |  [2](./qdnet/models/metric_strategy.py)  |
-|  数据增强  |   (旋转/镜像/对比度等、mixup/cutmix)         |  [3](./qdnet/dataaug/) | 
-|  损失函数  |   (ce_loss/ce_smothing_loss/focal_loss/bce_loss等)                     |  [4](./qdnet/loss/)    | 
+|  数据增强  |   (旋转/镜像/对比度等、mixup/cutmix)         |  [3](./qdnet/dataaug/) |
+|  损失函数  |   (ce_loss/ce_smothing_loss/focal_loss/bce_loss等)                     |  [4](./qdnet/loss/)    |
 
 
 ## 支持的全部模型：
@@ -47,8 +47,11 @@ python test.py --config_path "conf/effb3_ns.yaml" --n_splits 5
 
 4、推理
 ```
-python infer.py --config_path "conf/effb3_ns.yaml" --img_path "./data/img/rainstorm/1.jpg" --fold "0"
-python infer.py --config_path "conf/effb3_ns.yaml" --img_path "./data/img/waterlogging/2.jpg" --fold "1"
+python infer.py --config_path "conf/effb3_ns.yaml" --img_path "./data/img/rainstorm/01.jpg" --fold "0"
+predict --> [{'weather': '暴雨', 'score': '0.53469974'}, {'weather': '雪害', 'score': '0.30571106'}, {'weather': '风害', 'score': '0.112732135'}, {'weather': '浓雾', 'score': '0.046857048'}]
+
+python infer.py --config_path "conf/effb3_ns.yaml" --img_path "./data/img/waterlogging/02.jpg" --fold "1"
+predict --> [{'weather': '风害', 'score': '0.5515153'}, {'weather': '浓雾', 'score': '0.19872001'}, {'weather': '雪害', 'score': '0.13002536'}, {'weather': '暴雨', 'score': '0.11973937'}]
 ```
 
 
